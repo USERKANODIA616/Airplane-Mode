@@ -1,0 +1,173 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_rename": 1,
+ "creation": "2026-05-21 17:08:17.778464",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "airplane",
+  "route",
+  "amended_from",
+  "column_break_wkcj",
+  "status",
+  "is_published",
+  "section_break_wtci",
+  "source_airport",
+  "source_airport_code",
+  "column_break_jeqj",
+  "destination_airport",
+  "destination_airport_code",
+  "depature_details_section",
+  "date_of_departure",
+  "duration",
+  "column_break_pbid",
+  "time_of_depature"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_wtci",
+   "fieldtype": "Section Break",
+   "label": "Airport Details"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Airplane Flight",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "airplane",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Airplane",
+   "options": "Airplane",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_of_departure",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Departure",
+   "reqd": 1
+  },
+  {
+   "fieldname": "time_of_depature",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Time of Depature",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_jeqj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Duration",
+   "in_list_view": 1,
+   "label": "Duration",
+   "reqd": 1
+  },
+  {
+   "default": "Scheduled",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Scheduled\nCompleted\nCancelled"
+  },
+  {
+   "fieldname": "source_airport",
+   "fieldtype": "Link",
+   "label": "Source Airport",
+   "options": "Airport",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "source_airport.code",
+   "fieldname": "source_airport_code",
+   "fieldtype": "Data",
+   "label": "Source Airport Code"
+  },
+  {
+   "fieldname": "destination_airport",
+   "fieldtype": "Link",
+   "label": "Destination Airport",
+   "options": "Airport",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "destination_airport.code",
+   "fieldname": "destination_airport_code",
+   "fieldtype": "Data",
+   "label": "Destination Airport Code"
+  },
+  {
+   "fieldname": "column_break_wkcj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "depature_details_section",
+   "fieldtype": "Section Break",
+   "label": "Depature Details"
+  },
+  {
+   "fieldname": "column_break_pbid",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "route"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Is Published"
+  }
+ ],
+ "grid_page_length": 50,
+ "has_web_view": 1,
+ "index_web_pages_for_search": 1,
+ "is_published_field": "is_published",
+ "is_submittable": 1,
+ "links": [
+  {
+   "group": "Connections",
+   "link_doctype": "Airplane Ticket",
+   "link_fieldname": "flight"
+  }
+ ],
+ "modified": "2026-05-22 16:48:31.491462",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Airplane Flight",
+ "naming_rule": "By script",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "route": "flights",
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

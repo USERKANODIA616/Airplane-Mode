@@ -1,0 +1,31 @@
+{% extends "templates/web.html" %} {% block page_content %}
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+	integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"
+/>
+<div class="container">
+	<div class="col">
+		<h3>{{ title |e }}</h3>
+		<br />
+		<h4>Flight Details</h4>
+		<br />
+		<ui>
+			<li>Airline:{{title.split('-')[0]}}</li>
+			<li>
+				{{doc.source_airport_code}}&nbsp;<i class="fa-solid fa-arrow-right"></i
+				>&nbsp;{{doc.destination_airport_code}}
+			</li>
+			<li>{{doc.date_of_departure}} | {{doc.time_of_depature}}</li>
+			<li>Duration: {{frappe.utils.format_duration(doc.duration)}}</li>
+			<a
+				class="btn btn-info btn-lg mt-5"
+				href="http://127.0.0.1:8000/book-flight-ticket-web-form/new"    
+				>Book Flight</a
+			>
+		</ui>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+<div class="card mb-5">
+	<div class="card-body">
+		<h6>{{ doc.name.split('-')[0] }}</h6>
+		<p>
+			{{ doc.source_airport_code }}
+			<i class="fa-solid fa-arrow-right"></i> {{doc.destination_airport_code}}
+		</p>
+		<p>
+			{{ frappe.format(doc.date_of_departure, {'fieldtype': 'Date'}) }} | {{
+			frappe.format(doc.time_of_depature,{'fieldtype':'Time'})}} |
+			{{frappe.utils.format_duration(doc.duration)}}
+		</p>
+		<a href="{{doc.route}}" style="color: blue">View Flight</a>
+	</div>
+</div>
+
+<!-- this is a sample default list template -->
