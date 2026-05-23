@@ -10,7 +10,6 @@ from frappe.utils import flt
 class AirplaneTicket(Document):
 	def before_save(self):
 		self.set_seat()
-		pass
 
 	def set_seat(self):
 		if not self.seat:

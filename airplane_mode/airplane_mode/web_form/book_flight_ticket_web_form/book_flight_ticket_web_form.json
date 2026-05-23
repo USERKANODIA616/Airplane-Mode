@@ -65,7 +65,7 @@
     },
     {
       "allow_read_on_all_link_options": 0,
-      "default": 5400.0,
+      "default": "5400.0",
       "fieldname": "flight_price",
       "fieldtype": "Currency",
       "hidden": 0,
