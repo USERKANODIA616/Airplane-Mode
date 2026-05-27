@@ -9,15 +9,27 @@ from frappe.utils import flt
 
 class AirplaneTicket(Document):
 	def before_save(self):
-		self.set_seat()
+		# self.set_seat()
+		pass
 
 	def set_seat(self):
-		if not self.seat:
-			number = random.randint(1, 99)
-			letter = random.choice(["A", "B", "C", "D", "E"])
-			self.seat = f"{number}{letter}"
+		# if not self.seat:
+			# number = random.randint(1, 99)
+			# letter = random.choice(["A", "B", "C", "D", "E"])
+			# self.seat = f"{number}{letter}"
+		pass
 
-	def validate(self):
+	def validate_seat(self):
+		flight = frappe.get_doc("Airplane Flight", self.flight)
+
+		booked_tickets = frappe.db.count("Airplane Ticket",{"flight": self.flight})
+
+		airplane = frappe.get_doc("Airplane", flight.airplane)
+
+		if booked_tickets >= airplane.capacity:
+			frappe.throw("No more seats available for this flight")
+			
+	def total_calculation(self):
 		total_amount = 0
 		add_ons=[]
 		
@@ -28,6 +40,10 @@ class AirplaneTicket(Document):
 			add_ons.append(items.item)
 
 		self.total_amount = flt(total_amount) + flt(self.flight_price)
+
+	def validate(self):
+		self.validate_seat()
+		self.total_calculation()
 
 	def before_submit(self):
 		if self.status != "Boarded":

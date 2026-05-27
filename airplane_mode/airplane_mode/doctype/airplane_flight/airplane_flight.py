@@ -11,6 +11,7 @@ class AirplaneFlight(WebsiteGenerator):
 	def before_submit(self):
 		if self.status != "Completed":
 			self.status = "Completed"
+			
 	def autoname(self):
 		dt = get_datetime(self.creation)
 		prefix = f"{self.airplane}-{dt.month}-{dt.year}-"

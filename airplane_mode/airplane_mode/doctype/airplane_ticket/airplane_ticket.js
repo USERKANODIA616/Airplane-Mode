@@ -1,6 +1,25 @@
 // Copyright (c) 2026, shubham and contributors
 // For license information, please see license.txt
 frappe.ui.form.on("Airplane Ticket", {
+	refresh(frm) {
+		if (!frm.doc.seat) {
+			frm.add_custom_button(
+				__("Assign Seat"),
+				() => {
+					frappe.prompt(
+						"Seat",
+						(values) => {
+							frm.set_value("seat", values.value).save();
+						},
+						"Enter seat number",
+						"Assign",
+					);
+				},
+				__("Action"),
+			);
+		}
+	},
+
 	flight_price(frm) {
 		frm.trigger("update_total_amount");
 	},

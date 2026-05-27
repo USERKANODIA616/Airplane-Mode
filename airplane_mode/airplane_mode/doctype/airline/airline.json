@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_import": 1,
  "allow_rename": 1,
  "autoname": "prompt",
@@ -8,9 +9,10 @@
  "engine": "InnoDB",
  "field_order": [
   "headquarters",
-  "column_break_csui",
   "founding_year",
-  "customer_care_no"
+  "column_break_csui",
+  "customer_care_no",
+  "website"
  ],
  "fields": [
   {
@@ -37,6 +39,12 @@
    "in_list_view": 1,
    "label": "Customer Care Number",
    "reqd": 1
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL"
   }
  ],
  "grid_page_length": 50,
@@ -47,7 +55,7 @@
    "link_fieldname": "airline_name"
   }
  ],
- "modified": "2026-05-18 15:04:52.331249",
+ "modified": "2026-05-27 11:24:04.563822",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airline",
@@ -65,6 +73,36 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Airport Authority Personnel",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fleet Manager",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Flight Crew Member",
+   "share": 1
   }
  ],
  "row_format": "Dynamic",
