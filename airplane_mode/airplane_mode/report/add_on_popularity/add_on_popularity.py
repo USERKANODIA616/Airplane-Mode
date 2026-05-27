@@ -24,8 +24,8 @@ def get_columns() -> list[dict]:
 	"""
 	return [
 		{
-			"label": "airline_name",
-			"fieldname": "airline_name",
+			"label": "airline",
+			"fieldname": "airline",
 			"fieldtype": "Data",
 		},
 		{

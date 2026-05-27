@@ -9,8 +9,7 @@ from frappe.utils import flt
 
 class AirplaneTicket(Document):
 	def before_save(self):
-		# self.set_seat()
-		pass
+		self.validate_seat()
 
 	def set_seat(self):
 		# if not self.seat:
@@ -18,6 +17,10 @@ class AirplaneTicket(Document):
 			# letter = random.choice(["A", "B", "C", "D", "E"])
 			# self.seat = f"{number}{letter}"
 		pass
+
+	def before_submit():
+		if not self.seat:
+			frappe.throw("seat not set")
 
 	def validate_seat(self):
 		flight = frappe.get_doc("Airplane Flight", self.flight)

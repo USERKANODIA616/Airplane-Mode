@@ -19,14 +19,14 @@ def execute(filters: dict | None = None):
         .left_join(Flight).on(Flight.airplane == Airplane.name)
         .left_join(Ticket).on((Ticket.flight == Flight.name) & (Ticket.docstatus==1))
         .select(
-            Airplane.airline_name,
+            Airplane.airline,
             Coalesce(Sum(Ticket.total_amount), 0).as_("revenue")
         )
-        .groupby(Airplane.airline_name)
+        .groupby(Airplane.airline)
     ).run(as_dict=True)
     chart = {
         "data": {
-            "labels": [x.airline_name for x in data],
+            "labels": [x.airline for x in data],
             "datasets": [
                 {
                     "values": [x.revenue for x in data]
@@ -47,12 +47,12 @@ def get_columns() -> list[dict]:
     """
     return [
         {
-            "label": "airline_name",
-            "fieldname": "airline_name",
+            "label": "Airline",
+            "fieldname": "airline",
             "fieldtype": "Data",
         },
         {
-            "label": _("revenue"),
+            "label": _("Revenue"),
             "fieldname": "revenue",
             "fieldtype": "Currency",
             "option":"IRN"
