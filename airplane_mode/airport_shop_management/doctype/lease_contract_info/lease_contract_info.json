@@ -1,0 +1,131 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-05-28 15:47:25.060461",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tenant",
+  "shop",
+  "rent_amount",
+  "security_deposit",
+  "disable_notification",
+  "contract_file",
+  "column_break_gcie",
+  "start_date",
+  "expiry_date",
+  "pending_lease_months",
+  "total_lease_months",
+  "upcoming_rent_day"
+ ],
+ "fields": [
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tenant ",
+   "options": "Tenant Info",
+   "reqd": 1
+  },
+  {
+   "fieldname": "shop",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Shop",
+   "options": "Airport Shop",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "shop.monthly_rent",
+   "fieldname": "rent_amount",
+   "fieldtype": "Currency",
+   "label": "Rent Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "security_deposit",
+   "fieldtype": "Currency",
+   "label": "Security Deposit"
+  },
+  {
+   "fieldname": "column_break_gcie",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expiry Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contract_file",
+   "fieldtype": "Attach",
+   "label": "Contract File"
+  },
+  {
+   "fieldname": "pending_lease_months",
+   "fieldtype": "Int",
+   "label": "Pending Lease Months",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_lease_months",
+   "fieldtype": "Int",
+   "label": "Total Lease Months",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "upcoming_rent_day",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "label": "Upcoming Rent Day"
+  },
+  {
+   "default": "0",
+   "fieldname": "disable_notification",
+   "fieldtype": "Check",
+   "label": "Disable Notification"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Rent Payment",
+   "link_fieldname": "lease_contract"
+  }
+ ],
+ "modified": "2026-05-29 16:44:23.754497",
+ "modified_by": "Administrator",
+ "module": "Airport Shop Management",
+ "name": "Lease Contract Info",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

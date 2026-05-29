@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-05-28 16:23:54.829056",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "payment_date",
+  "month",
+  "lease_contract",
+  "column_break_oaot",
+  "tenant",
+  "shop",
+  "paid_amount",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "lease_contract",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lease Contract",
+   "options": "Lease Contract Info",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "lease_contract.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Data",
+   "label": "Tenant",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "lease_contract.shop",
+   "fieldname": "shop",
+   "fieldtype": "Data",
+   "label": "Shop",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Select",
+   "label": "Month",
+   "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+  },
+  {
+   "fieldname": "column_break_oaot",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "lease_contract.rent_amount",
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Rent Payment",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-05-29 13:02:07.917973",
+ "modified_by": "Administrator",
+ "module": "Airport Shop Management",
+ "name": "Rent Payment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

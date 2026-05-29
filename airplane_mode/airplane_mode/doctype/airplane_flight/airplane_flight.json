@@ -8,10 +8,14 @@
  "field_order": [
   "airplane",
   "route",
+  "price",
   "amended_from",
   "column_break_wkcj",
   "status",
+  "gate_number",
   "is_published",
+  "crew_details_section",
+  "table_zcxl",
   "section_break_wtci",
   "source_airport",
   "source_airport_code",
@@ -129,6 +133,30 @@
    "fieldname": "is_published",
    "fieldtype": "Check",
    "label": "Is Published"
+  },
+  {
+   "fieldname": "crew_details_section",
+   "fieldtype": "Section Break",
+   "label": "Crew Details"
+  },
+  {
+   "fieldname": "table_zcxl",
+   "fieldtype": "Table",
+   "options": "Airplane Flight Crew"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "gate_number",
+   "fieldtype": "Int",
+   "label": "Gate Number",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Price",
+   "non_negative": 1,
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
@@ -143,7 +171,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-05-26 20:22:24.384949",
+ "modified": "2026-05-29 17:58:03.995933",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",

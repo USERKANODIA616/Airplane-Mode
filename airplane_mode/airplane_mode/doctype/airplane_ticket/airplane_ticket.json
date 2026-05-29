@@ -9,10 +9,11 @@
   "section_break_6jlc",
   "passenger",
   "status",
-  "amended_from",
+  "gate_number",
   "column_break_huqq",
   "flight",
   "seat",
+  "amended_from",
   "section_break_atsa",
   "source_airport_code",
   "column_break_qizh",
@@ -141,6 +142,7 @@
   },
   {
    "default": "0",
+   "fetch_from": "flight.price",
    "fieldname": "flight_price",
    "fieldtype": "Currency",
    "label": "Flight Price",
@@ -170,13 +172,20 @@
   {
    "fieldname": "column_break_qizh",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "flight.gate_number",
+   "fieldname": "gate_number",
+   "fieldtype": "Int",
+   "label": "Gate Number",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-26 20:21:59.286293",
+ "modified": "2026-05-28 12:39:15.909136",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
