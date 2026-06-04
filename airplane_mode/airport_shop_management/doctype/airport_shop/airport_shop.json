@@ -6,13 +6,16 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "shop_type",
   "shop_number",
   "shop_name",
   "airport",
+  "is_published",
   "column_break_jbms",
   "status",
   "monthly_rent",
-  "airport_code"
+  "airport_code",
+  "route"
  ],
  "fields": [
   {
@@ -61,12 +64,32 @@
    "fieldtype": "Data",
    "label": "Airport Code",
    "read_only": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Is Published"
+  },
+  {
+   "fieldname": "shop_type",
+   "fieldtype": "Link",
+   "label": "Shop Type",
+   "options": "Shop Type",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "is_published",
  "links": [],
- "modified": "2026-05-28 15:24:53.097091",
+ "modified": "2026-05-30 16:41:19.224818",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Airport Shop",
@@ -85,6 +108,7 @@
    "write": 1
   }
  ],
+ "route": "shops",
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",

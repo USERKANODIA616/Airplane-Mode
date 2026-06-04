@@ -4,6 +4,7 @@ app_publisher = "shubham"
 app_description = "A Hypotheticel flight ticket system"
 app_email = "temp.skanodia616@gmail.com"
 app_license = "mit"
+fixtures=[{"dt":"Shop Type","filters":{"is_enable":1}}]
 
 # Apps
 # ------------------

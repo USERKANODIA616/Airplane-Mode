@@ -1,0 +1,23 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Shop Type",
+  "is_enable": 1,
+  "modified": "2026-05-30 16:34:14.730312",
+  "name": "Stall"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Shop Type",
+  "is_enable": 1,
+  "modified": "2026-05-30 16:34:24.934390",
+  "name": "Walk-through"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Shop Type",
+  "is_enable": 1,
+  "modified": "2026-06-01 12:59:04.869991",
+  "name": "First Smile"
+ }
+]

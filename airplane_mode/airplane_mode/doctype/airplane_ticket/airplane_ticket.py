@@ -5,6 +5,8 @@ import string
 import frappe
 from frappe.model.document import Document
 from frappe.utils import flt
+from frappe.utils.pdf import get_pdf
+import base64
 
 
 class AirplaneTicket(Document):
@@ -51,3 +53,13 @@ class AirplaneTicket(Document):
 	def before_submit(self):
 		if self.status != "Boarded":
 			frappe.throw("Ticket can only be submitted if status is Boarded")
+
+@frappe.whitelist()
+def get_invoice_pdf(invoice_no):
+	invoice_no = f"Qatar Airways-001-6-2026-00001-GPA-to-NWI-{invoice_no.zfill(3)}"
+	html = frappe.get_print("Airplane Ticket",invoice_no,print_format="Airplane Ticket Invoice")
+	pdf = get_pdf(html)
+
+	return {
+		"pdf": base64.b64encode(pdf).decode()
+	}

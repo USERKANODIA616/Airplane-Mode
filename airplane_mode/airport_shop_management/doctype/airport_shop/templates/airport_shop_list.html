@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Airport Shop</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic" />
+		<link rel="stylesheet" href="/assets/airplane_mode/css/style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@440&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div style="overflow: hidden; height: 55px">
+			<nav>
+				<h2 style="margin-top: 10px">
+					<a href="/shops" class="brand">Airport Shops</a>
+				</h2>
+			</nav>
+		</div>
+		{% block page_content %} {% include "templates/includes/list/list.html" %} {% endblock %}
+	</body>
+</html>

@@ -20,9 +20,10 @@
 			</li>
 			<li>{{doc.date_of_departure}} | {{doc.time_of_depature}}</li>
 			<li>Duration: {{frappe.utils.format_duration(doc.duration)}}</li>
+			<li>Price: IRN {{doc.price}}</li>
 			<a
 				class="btn btn-info btn-lg mt-5"
-				href="http://127.0.0.1:8000/book-flight-ticket-web-form/new"    
+				href="http://127.0.0.1:8000/book-flight-ticket-web-form/new?flight={{title}}&flight_price={{doc.price}}"
 				>Book Flight</a
 			>
 		</ui>

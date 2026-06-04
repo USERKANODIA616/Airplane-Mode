@@ -1,0 +1,36 @@
+body {
+	color: black;
+	font-family: "Nunito", sans-serif;
+}
+
+nav {
+	background-color: #cb997e;
+}
+
+.card {
+	margin: 2rem;
+}
+
+.container {
+	margin-top: 3rem;
+	text-align: center;
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	background-color: #cb997e;
+	color: white;
+	text-decoration: none;
+	border-radius: 8px;
+	font-weight: 600;
+	transition: 0.3s;
+}
+.card .btn {
+	margin-left: 5rem;
+}
+
+.btn:hover {
+	background-color: #b5835a;
+	transform: translateY(-2px);
+}

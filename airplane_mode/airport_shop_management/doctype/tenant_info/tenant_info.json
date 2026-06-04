@@ -8,6 +8,7 @@
  "field_order": [
   "company_name",
   "tenant_name",
+  "lead",
   "column_break_tpfy",
   "email",
   "phone"
@@ -33,21 +34,29 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "lead.lead_email_address",
    "fieldname": "email",
    "fieldtype": "Data",
    "label": "Email",
    "options": "Email"
   },
   {
+   "fetch_from": "lead.lead_phone_number",
    "fieldname": "phone",
    "fieldtype": "Phone",
    "label": "Phone"
+  },
+  {
+   "fieldname": "lead",
+   "fieldtype": "Link",
+   "label": "Lead",
+   "options": "Shop Lead"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-05-28 15:44:47.769353",
+ "modified": "2026-05-30 16:10:59.080877",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Tenant Info",

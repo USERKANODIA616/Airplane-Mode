@@ -1,0 +1,11 @@
+<div class="flex two">
+	{% if doc.status=="Available"%}
+	<div class="card">
+		<p>Name : {{doc.shop_number}} at {{doc.shop_name}}</p>
+		{% set self=frappe.get_doc("Airport",doc.airport) %}
+		<p>Near at <b>{{self.airport_name}}</b></p>
+		<p>Rent : &#8377;{{doc.monthly_rent}}</p>
+		<a class="btn" href="/{{ doc.route |e }}">Checkout</a>
+	</div>
+	{% endif %}
+</div>

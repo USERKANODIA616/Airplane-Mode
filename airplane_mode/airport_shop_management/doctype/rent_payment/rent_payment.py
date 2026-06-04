@@ -4,9 +4,12 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils import get_datetime
+from frappe.utils.pdf import get_pdf
+import base64
 
 
 class RentPayment(Document):
+
 	def autoname(self):
 		pd = get_datetime(self.payment_date)
 		prefix = f"{self.shop}-{self.month}-{pd.day}/{pd.month}/{pd.year}"
