@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_bulk_edit": 1,
  "allow_guest_to_view": 1,
  "allow_rename": 1,
  "creation": "2026-05-21 17:08:17.778464",
@@ -7,12 +8,12 @@
  "engine": "InnoDB",
  "field_order": [
   "airplane",
-  "route",
   "price",
   "amended_from",
   "column_break_wkcj",
   "status",
   "gate_number",
+  "route",
   "is_published",
   "crew_details_section",
   "table_zcxl",
@@ -126,10 +127,10 @@
   {
    "fieldname": "route",
    "fieldtype": "Data",
-   "label": "route"
+   "label": "Route"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "is_published",
    "fieldtype": "Check",
    "label": "Is Published"
@@ -171,7 +172,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-05-29 17:58:03.995933",
+ "modified": "2026-06-13 12:57:08.881354",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
