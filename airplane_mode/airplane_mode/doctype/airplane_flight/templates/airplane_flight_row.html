@@ -1,3 +1,4 @@
+{% if doc.status == "Scheduled" %}
 <div class="card mb-5">
 	<div class="card-body">
 		<h6>{{ doc.name.split('-')[0] }}</h6>
@@ -13,5 +14,6 @@
 		<a href="{{doc.route}}" style="color: blue">View Flight</a>
 	</div>
 </div>
+{% endif %}
 
 <!-- this is a sample default list template -->

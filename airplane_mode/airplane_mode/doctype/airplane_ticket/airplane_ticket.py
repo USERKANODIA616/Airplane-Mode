@@ -19,8 +19,10 @@ class AirplaneTicket(Document):
 
 	def on_update(self):
 		before = self.get_doc_before_save()
-		if before and (before.seat != self.seat or before.flight != self.flight):
+		before = self.get_doc_before_save()
+		if before and before.seat != self.seat:
 			release_seat(before.flight, before.seat)
+			book_seat(self.flight, self.seat, self.name)
 
 	def before_submit(self):
 		if not self.seat:
@@ -110,14 +112,20 @@ def release_seat(flight, seat_number):
 @frappe.whitelist()
 def get_available_seats(flight):
 	frappe.has_permission("Airplane Ticket", throw=True)
-	return frappe.get_all(
-		"Flight Seat",
-		filters={"flight": flight, "Status": "Available"},
-		pluck="seat_number",
-		order_by="creation asc",
-	)
+	return  frappe.get_all(
+        "Flight Seat",
+        filters={"flight": flight},
+        fields=["seat_number", "status"],
+        order_by="seat_number asc"
+    )
 
 @frappe.whitelist()
 def assign_seat(flight,seat,ticket):
-	book_seat(flight,seat,ticket)
+	ticket_doc = frappe.get_doc("Airplane Ticket", ticket)
+
+	if ticket_doc.seat and ticket_doc.seat != seat:
+		release_seat(flight, ticket_doc.seat)
+	ticket_doc.seat = seat
+	ticket_doc.save(ignore_permissions=True)
+	book_seat(flight, seat, ticket)
 	return True

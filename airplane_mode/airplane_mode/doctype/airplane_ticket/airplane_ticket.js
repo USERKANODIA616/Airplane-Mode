@@ -19,41 +19,58 @@ frappe.ui.form.on("Airplane Ticket", {
 							}
 							const d = new frappe.ui.Dialog({
 								title: __("Select a Seat"),
+								size: "extra-large",
 								fields: [
 									{
-										label: __("Seat"),
-										fieldname: "seat",
-										fieldtype: "Select",
-										options: seats,
-										reqd: 1,
+										fieldname: "seat_selector",
+										fieldtype: "HTML",
 									},
 								],
 								primary_action_label: __("Assign"),
-								primary_action(values) {
-									d.hide();
-									frm.set_value("seat", values.seat);
-									frm.save();
+								primary_action() {
+									const selectedSeat = this.selectedSeat;
+
+									if (!selectedSeat) {
+										frappe.msgprint("Please select a seat");
+										return;
+									}
+
+									frm.set_value("seat", selectedSeat);
+
 									frappe
 										.call({
 											method: "airplane_mode.airplane_mode.doctype.airplane_ticket.airplane_ticket.assign_seat",
 											args: {
 												flight: frm.doc.flight,
-												seat: values.seat,
+												seat: selectedSeat,
 												ticket: frm.doc.name,
 											},
 										})
 										.then(() => {
 											frm.reload_doc();
-
-											frappe.show_alert({
-												message: __("Seat Assigned"),
-												indicator: "green",
-											});
 											d.hide();
 										});
 								},
 							});
+
 							d.show();
+
+							const wrapper = d.fields_dict.seat_selector.$wrapper;
+							wrapper.html("");
+
+							const rootDiv = document.createElement("div");
+							rootDiv.id = "seat-react-root";
+							rootDiv.style.minHeight = "300px";
+							rootDiv.style.display = "block";
+
+							wrapper[0].appendChild(rootDiv);
+
+							frappe.require("/assets/airplane_mode/react/index-B8luLr0x.js", () => {
+								const el = wrapper.find("#seat-react-root")[0];
+								if (el) {
+									window.renderSeatSelector(el, seats, d);
+								}
+							});
 						});
 				},
 				__("Action"),
