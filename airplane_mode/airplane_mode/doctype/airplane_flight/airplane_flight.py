@@ -98,3 +98,17 @@ def update_ticket_status(flight):
 			frappe.get_traceback(),
 			"Update Ticket Status Job Failed"
     	)
+@frappe.whitelist()
+def cancel_flight(flight_name):
+	flight_doc = frappe.get_doc("Airplane Flight",flight_name)
+	if flight_doc.status == "Cancelled":
+		frappe.throw("Flight is already Cancelled")
+
+	flight_doc.status = "Cancelled"
+	flight_doc.save(ignore_permissions=True)
+	frappe.db.commit()
+
+	return{
+		"ticket": flight_doc.name,
+		"status": flight_doc.status,
+	}

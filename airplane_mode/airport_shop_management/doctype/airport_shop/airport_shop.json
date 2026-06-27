@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_bulk_edit": 1,
  "allow_import": 1,
  "allow_rename": 1,
  "creation": "2026-05-28 14:50:47.895785",
@@ -80,6 +81,7 @@
    "fieldname": "shop_type",
    "fieldtype": "Link",
    "label": "Shop Type",
+   "link_filters": "[[\"Shop Type\",\"is_enable\",\"=\",1]]",
    "options": "Shop Type",
    "reqd": 1
   }
@@ -89,7 +91,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2026-05-30 16:41:19.224818",
+ "modified": "2026-06-26 12:46:51.151639",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Airport Shop",

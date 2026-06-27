@@ -7,11 +7,10 @@ from frappe.utils import get_datetime
 from frappe.utils import nowdate
 from dateutil.relativedelta import relativedelta
 import calendar
-
 class LeaseContractInfo(Document):
 	def validate(self):
 		if self.start_date >= self.expiry_date:
-			frappe.throw("Lease Start Date cannot be greater than or equal to Expiry Date")   
+			frappe.throw("Lease Start Date cannot be greater than or equal to Expiry Date")
 
 	def autoname(self):
 		sd = get_datetime(self.start_date)
@@ -22,18 +21,16 @@ class LeaseContractInfo(Document):
 		if ed.day > sd.day:
 			self.total_lease_months += 1
 
-	def on_update(self):
+	def before_save(self):
 		old_doc = self.get_doc_before_save()
-
 		if (old_doc and old_doc.workflow_state != "Reject" and self.workflow_state == "Approved"):
 			self.pending_lease_months = self.total_lease_months
 			self.upcoming_rent_day = get_datetime(self.start_date) + relativedelta(months=1)
 
 		if self.workflow_state == "Approved":
 			self.docstatus=1;
-
-			sd=frappe.get_doc("Airport Shop",self.shop)
-			sd.db_set("status","Occupied")
+			
+			frappe.db.set_value("Airport Shop", self.shop, "status", "Occupied")
 
 		if self.workflow_state == "Close" or self.workflow_state == "Reject":
 			sd=frappe.get_doc("Airport Shop",self.shop)
@@ -41,6 +38,7 @@ class LeaseContractInfo(Document):
 	
 
 #crate rent payment
+
 @frappe.whitelist()
 def create_rent_payment(lease_contract):
 	try:
@@ -49,7 +47,7 @@ def create_rent_payment(lease_contract):
 		
 		if df.pending_lease_months > 0:
 			diff=df.total_lease_months-df.pending_lease_months
-			expected_month = ((sd.month + diff - 1) % 12) + 1 
+			expected_month = ((sd.month + diff - 1) % 12) + 1
 			# check last payment month 
 			last_payment = frappe.get_all(
 				"Rent Payment",

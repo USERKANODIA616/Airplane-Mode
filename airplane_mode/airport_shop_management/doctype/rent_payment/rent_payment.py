@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils import get_datetime
+from dateutil.relativedelta import relativedelta
 
 
 class RentPayment(Document):
@@ -13,7 +14,7 @@ class RentPayment(Document):
 		prefix = f"{self.shop}-{self.month}-{pd.day}/{pd.month}/{pd.year}"
 		self.name=f"{prefix}"
 
-	def validate(self):
+	def before_insert(self):
 		try:
 			df=frappe.get_doc("Lease Contract Info",self.lease_contract)
 			sd = get_datetime(df.start_date)

@@ -1,8 +1,8 @@
 # Copyright (c) 2026, shubham and contributors
 # For license information, please see license.txt
-import random
-import string
 import frappe
+import string
+import random
 from frappe.model.document import Document
 from frappe.utils import flt
 from frappe.utils.pdf import get_pdf
@@ -66,6 +66,7 @@ class AirplaneTicket(Document):
 				frappe.throw("Flight cannot be changed after creation")
 		self.total_calculation()
 
+
 	def assign_seat(self):
 		if not self.seat:
 			available = frappe.get_all(
@@ -87,6 +88,24 @@ def get_invoice_pdf(invoice_no):
 
 	return {
 		"pdf": base64.b64encode(pdf).decode()
+	}
+
+@frappe.whitelist()
+def book_airplane_ticket(passenger, flight):
+	flight_doc = frappe.get_doc("Airplane Flight", flight)
+	passenger_doc = frappe.db.get_value("Flight Passenger",{"full_name":passenger},"name")
+	if flight_doc.status == "Cancelled":
+		frappe.throw("Flight is cancelled")
+	ticket = frappe.new_doc("Airplane Ticket")
+	ticket.passenger = passenger_doc
+	ticket.flight = flight_doc.name
+	ticket.status = "Booked"
+	ticket.insert()
+
+	return {
+		"ticket": ticket.name,
+		"status": ticket.status,
+		"total_amount":ticket.total_amount
 	}
 
 def book_seat(flight, seat_number, ticket):

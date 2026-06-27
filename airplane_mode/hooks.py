@@ -143,6 +143,12 @@ fixtures=[{"dt":"Shop Type","filters":{"is_enable":1}}]
 
 # Scheduled Tasks
 # ---------------
+scheduler_events = {
+	"daily": [
+		"airplane_mode.airplane_mode.task.send_rent_reminders"
+	],
+}
+
 
 # scheduler_events = {
 # 	"all": [
